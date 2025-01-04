@@ -1,6 +1,6 @@
 {
   "name": "aidos-ui",
-  "version": "3.0.20",
+  "version": "3.0.21",
   "description": "A simple UI framework",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
