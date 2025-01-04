@@ -22,7 +22,7 @@ export function OnVisible({ children, onVisible, }) {
             intersectionObserverRef.current = null;
         };
         // eslint-disable-next-line
-    }, []);
+    }, [onVisible]);
     return children(refCallback);
 }
 //# sourceMappingURL=OnVisible.js.map

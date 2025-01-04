@@ -125,7 +125,7 @@ export function getInteractableJSStyles({
 export const getGlyphColor = (
   color: InteractableColor,
   disabled: boolean | undefined,
-  bare: boolean | undefined
+  bare: boolean | undefined,
 ): TextColor => {
   if (disabled) {
     return "subtle";
@@ -148,7 +148,7 @@ export const getGlyphColor = (
 export const getCSSColor = (
   color: InteractableColor,
   disabled: boolean | undefined,
-  bare: boolean | undefined
+  bare: boolean | undefined,
 ): string => {
   if (disabled) {
     return cssVar("--subtle-text");

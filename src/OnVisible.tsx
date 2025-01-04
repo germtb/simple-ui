@@ -9,34 +9,37 @@ export function OnVisible({
 }) {
   const intersectionObserverRef = useRef<IntersectionObserver | null>(null);
 
-  const refCallback = useCallback((element) => {
-    if (element == null) {
-      return;
-    }
-
-    const intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting || entry.intersectionRatio > 0) {
-            onVisible();
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "0px",
+  const refCallback = useCallback(
+    (element) => {
+      if (element == null) {
+        return;
       }
-    );
 
-    intersectionObserverRef.current = intersectionObserver;
-    intersectionObserver.observe(element);
+      const intersectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              onVisible();
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: "0px",
+        },
+      );
 
-    return () => {
-      intersectionObserver.unobserve(element);
-      intersectionObserverRef.current = null;
-    };
-    // eslint-disable-next-line
-  }, []);
+      intersectionObserverRef.current = intersectionObserver;
+      intersectionObserver.observe(element);
+
+      return () => {
+        intersectionObserver.unobserve(element);
+        intersectionObserverRef.current = null;
+      };
+      // eslint-disable-next-line
+    },
+    [onVisible],
+  );
 
   return children(refCallback);
 }
